@@ -18,7 +18,7 @@ public class RestApi {
 
     @RequestMapping(value = "/ab", method = RequestMethod.POST)
     public String getBenchmark(@RequestBody Peticion peticion) throws Exception {
-        String cmd = "C:\\ProgramData\\AB\\ab.exe -n " + peticion.getCount() + " -c " + peticion.getConcurrent() + " " + peticion.getUrl();
+        String cmd = "C:\\ProgramData\\AB\\ab.exe -n " + peticion.getCount() + " -c " + peticion.getConcurrent() + " " + peticion.getUrl().replace("https", "http");
         Process p = Runtime.getRuntime().exec(cmd);
         p.waitFor();
         BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
@@ -29,6 +29,9 @@ public class RestApi {
         boolean flag = false;
         while ((line = reader.readLine()) != null) {
             cad += line + "\n";
+            if (line.contains("(Connect:"))
+                continue;
+
             if (flag == false && line.contains("done"))
                 flag = true;
             else if (line.contains(":") && flag == true && !line.isEmpty()) {
@@ -50,7 +53,7 @@ public class RestApi {
 
         System.out.println("cad: " + cad.split("done")[1]);
         String s = "{" + json + table + "]}";
-        return s.replace("},]", "}]").replace(",,",",");
+        return s.replace("},]", "}]").replace(",,", ",").replace(",,", ",");
     }
 
 }
