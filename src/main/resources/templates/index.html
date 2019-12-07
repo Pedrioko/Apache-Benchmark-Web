@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico"/>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../favicon.ico" />
 
-    <title>Apache Benchmark Web</title>
+  <title>Apache Benchmark Web</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+  <!-- Bootstrap core CSS -->
+  <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}" />
 </head>
+
 <body>
   <div class="py-5">
     <div class="container">
@@ -206,32 +208,14 @@
       </div>
     </div>
   </div>
-<script src="../static/js/jquery.js" th:href="@{/js/jquery.js}"></script>
+  <script src="../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
 
-<script src="../static/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
+  <script src="../static/js/bootstrap.js" th:src="@{/js/bootstrap.js}"></script>
 
-<script>
+  <script>
 
-	var datos = {};
-	datos["count"] = 10;
-	datos["concurrent"] = 10;
-	datos["url"] ='http://www.facebook.com/';
 
-$.ajax({
-	url: '/ab',
-	method: "POST",
-	contentType : "application/json",
-    data: JSON.stringify(datos),
-	success: function(respuesta) {
-		console.log(respuesta);
-		console.log(JSON.parse(respuesta));
-	},
-	error: function(err) {
-	    console.log(err);
-        console.log("No se ha podido obtener la información");
-    }
-});
-
-</script>
+  </script>
 </body>
+
 </html>
