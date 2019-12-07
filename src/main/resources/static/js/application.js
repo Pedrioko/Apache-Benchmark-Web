@@ -1,9 +1,9 @@
 $("#form-evalua").submit(function(event){
     event.preventDefault();
-    $('#mymodal').modal()
+    $('#mymodal').modal({ backdrop: 'static', keyboard: false})
     var datos = {};
     datos["count"] = parseInt($("#count").val());
-    datos["concurrent"] = $("concurrent").val()==true?parseInt($("#count").val()):1;
+    datos["concurrent"] = $("#concurrent").is(":checked")?parseInt($("#count").val()):1;
     datos["url"] =$("#url").val();
 
     $.ajax({
