@@ -30,7 +30,7 @@ $("#form-evalua").submit(function(event){
         $("#value11").html(respuesta.Total_transferred)
         $("#value12").html(respuesta.HTML_transferred)
         $("#value13").html(respuesta.Requests_per_second)
-        $("#value1grac4").html(respuesta.Time_per_request)
+        $("#value14").html(respuesta.Time_per_request)
         $("#value15").html(respuesta.Transfer_rate)
         $("#connectiontimes  > tbody").empty();
         $("#connectiontimes  > tbody:last-child").append('<tr><td>Connect</td> <td>'+respuesta.Connect[0]+'</td> <td>'+respuesta.Connect[1]+'</td> <td>'+respuesta.Connect[2]+'</td> <td>'+respuesta.Connect[3]+'</td> <td>'+respuesta.Connect[4]+'</td> </tr>')
