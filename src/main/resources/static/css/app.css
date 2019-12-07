@@ -2,3 +2,8 @@
     padding-top: 35%;
     padding-left: 50%;
 }
+
+.hide-scrollbar {
+	overflow: -moz-hidden-unscrollable;
+	overflow: hidden;
+}
