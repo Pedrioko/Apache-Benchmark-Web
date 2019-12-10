@@ -1,7 +1,11 @@
 package co.ede.udec.absystem.controllers;
 
+import co.ede.udec.absystem.domain.Dato;
 import co.ede.udec.absystem.domain.Peticion;
 import co.ede.udec.absystem.domain.Result;
+import org.jfree.data.statistics.Regression;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 
 @RestController
 public class RestApi {
@@ -55,5 +60,5 @@ public class RestApi {
         String s = "{" + json + table + "]}";
         return s.replace("},]", "}]").replace(",,", ",").replace(",,", ",");
     }
-
+    
 }

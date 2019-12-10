@@ -42,32 +42,26 @@ $("#form-evalua").submit(function (event) {
             respuesta.tabletime.forEach((item) => {
                 $("#porcenajes  > tbody:last-child").append('<tr><td>' + item.porcentaje + '</td><td>' + item.cantidad + '</td></tr>')
             });
+            var result = regression.linear(respuesta.tabletime.map(e => [parseFloat(e.cantidad.split("(")[0]), parseFloat(e.cantidad.split("(")[0])]));
 
+            var m = result.equation[0];
+            var c = result.equation[1];
 
             var ctx = document.getElementById('myChart1');
+            var lineardata = respuesta.tabletime.map(e => (parseFloat(e.cantidad) * m) + c);
             var myChart = new Chart(ctx, {
-                type: 'bar',
+                type: 'line',
                 data: {
                     labels: respuesta.tabletime.map(e => e.porcentaje),
                     datasets: [{
                         label: 'Percentage of the requests',
                         data: respuesta.tabletime.map(e => parseFloat(e.cantidad.split("(")[0])),
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }, {
+                        label: 'Linear Regression',
+                        data: lineardata,
+                        borderColor: 'rgba(54, 162, 235, 1)',
                         borderWidth: 1
                     }]
                 },
