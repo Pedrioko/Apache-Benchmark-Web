@@ -23,7 +23,7 @@ public class RestApi {
 
     @RequestMapping(value = "/ab", method = RequestMethod.POST)
     public String getBenchmark(@RequestBody Peticion peticion) throws Exception {
-        String cmd = "C:\\ProgramData\\AB\\ab.exe -n " + peticion.getCount() + " -c " + peticion.getConcurrent() + " " + peticion.getUrl().replace("https", "http");
+        String cmd = "ab -n " + peticion.getCount() + " -c " + peticion.getConcurrent() + " " + peticion.getUrl().replace("https", "http");
         Process p = Runtime.getRuntime().exec(cmd);
         p.waitFor();
         BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));

@@ -42,7 +42,7 @@ $("#form-evalua").submit(function (event) {
             respuesta.tabletime.forEach((item) => {
                 $("#porcenajes  > tbody:last-child").append('<tr><td>' + item.porcentaje + '</td><td>' + item.cantidad + '</td></tr>')
             });
-            var result = regression.linear(respuesta.tabletime.map(e => [parseFloat(e.cantidad.split("(")[0]), parseFloat(e.cantidad.split("(")[0])]));
+            var result = regression.linear(respuesta.tabletime.map((e, index) => [parseFloat(index), parseFloat(e.cantidad.split("(")[0])]));
 
             var m = result.equation[0];
             var c = result.equation[1];
